@@ -1,0 +1,14 @@
+EntityFramework
+Microsoft.AspNet.Identity.Core
+Microsoft.AspNet.Identity.EntityFramework
+MySql.Data
+MySQL.Data.Entities
+
+Yaaf.FSharp.Helper
+Yaaf.Xmpp.IM
+Yaaf.Database
+
+NUnit
+Foq
+FsUnit
+Unquote

@@ -1,0 +1,8 @@
+EntityFramework
+Microsoft.AspNet.Identity.Core
+Microsoft.AspNet.Identity.EntityFramework
+MySql.Data
+MySQL.Data.Entities
+
+Yaaf.Xmpp.IM
+Yaaf.Database

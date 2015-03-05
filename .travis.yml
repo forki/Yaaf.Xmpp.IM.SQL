@@ -1,0 +1,13 @@
+language: csharp
+
+sudo: false  # use the new container-based Travis infrastructure
+
+services:
+  - mysql
+
+before_script:
+  - mysql -e "CREATE USER 'nunit'@'localhost' IDENTIFIED BY 'jkYjgeriE8EIEIPrJNb8';" -uroot
+  - mysql -e "GRANT ALL PRIVILEGES ON rosterstore_nunit.* TO 'nunit'@'localhost';" -uroot
+
+script: 
+  - ./build.sh All
