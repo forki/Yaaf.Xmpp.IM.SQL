@@ -3,9 +3,9 @@ NUGET
   specs:
     EntityFramework (6.0.2)
     FAKE (3.18.0)
-    Foq (1.7)
+    Foq (1.7) - content: none
     FSharp.Compiler.Service (0.0.85)
-    FSharp.Core (3.1.2.1)
+    FSharp.Core (3.1.2.1) - copy_local: false
     FSharp.Formatting (2.6.3)
       FSharp.Compiler.Service (>= 0.0.81)
     FSharpx.Collections (1.10.1)
@@ -24,7 +24,7 @@ NUGET
     NUnit.Runners (2.6.4)
     SimpleInjector (2.7.2)
     Unquote (2.2.2)
-    Yaaf.AdvancedBuilding (0.3.2)
+    Yaaf.AdvancedBuilding (0.3.3)
       FAKE (>= 3.17.13)
       FSharp.Compiler.Service (>= 0.0.82)
       FSharp.Formatting (>= 2.6.3)

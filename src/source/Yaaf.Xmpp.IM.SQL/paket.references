@@ -4,4 +4,5 @@ Microsoft.AspNet.Identity.EntityFramework
 
 Yaaf.Xmpp.IM
 Yaaf.Database
+FSharp.Core
 Yaaf.FSharp.Helper

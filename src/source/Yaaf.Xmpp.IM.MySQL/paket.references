@@ -5,4 +5,5 @@ MySql.Data
 MySQL.Data.Entities
 
 Yaaf.Xmpp.IM
+FSharp.Core
 Yaaf.Database
