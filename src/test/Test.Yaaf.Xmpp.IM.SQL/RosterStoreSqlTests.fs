@@ -34,13 +34,9 @@ type ``Test-Yaaf-Xmpp-IM-Sql-DbContext: Check that Sql backend is ok``() =
     [<TestFixtureSetUp>]
     member x.FixtureSetup () =
         ()
-        //x.DetachDatabase()
-        //let dir = 
-        //    System.IO.Path.Combine(System.Environment.CurrentDirectory, "../../../temp")
-        //    |> System.IO.Path.GetFullPath
-        //printfn "Setup data dir: %s" dir
-        //System.AppDomain.CurrentDomain.SetData("DataDirectory", dir);
+
     member x.DetachDatabase() =
+        // This is currently completly broken.
         let nameOrCon = ApplicationDbTestContext.ConnectionName
         let connString =
             if not (nameOrCon.Contains (";")) then 
@@ -62,7 +58,7 @@ type ``Test-Yaaf-Xmpp-IM-Sql-DbContext: Check that Sql backend is ok``() =
     
     [<TestFixtureTearDown>]
     member x.FixtureTearDown() =
-        x.DetachDatabase()
+        //x.DetachDatabase()
         ()
 
     override x.CreateRosterStore () = 
