@@ -1,10 +1,11 @@
 services:
   - mysql
   - mssql2014
+  - mssql2014rs
 
 environment:
-  connection_mssql: Data Source=(LocalDb)\SQL2014;Database=master;Password=Password12!
-  connection_mysql: Server=localhost;Database=rosterstore_nunit;Uid=root;Pwd=Password12!
+  connection_mssql: "Data Source=(local)\SQL2014;Database=master;User ID=sa;Password=Password12!"
+  connection_mysql: "Server=localhost;Database=rosterstore_nunit;Uid=root;Pwd=Password12!"
 
 init:
   - git config --global core.autocrlf input
