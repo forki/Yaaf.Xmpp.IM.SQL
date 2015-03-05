@@ -103,9 +103,9 @@ let buildConfig =
               File.Delete "build/test/net45/Mono.Security.dll"
           FindUnitTestDlls = fun (folder, config) -> 
             seq {
-              yield folder @@ "Test.Yaaf.Xmpp.IM.MySQL.dll"
               if not isMono then
                 yield folder @@ "Test.Yaaf.Xmpp.IM.SQL.dll" 
+              yield folder @@ "Test.Yaaf.Xmpp.IM.MySQL.dll"
              } |> Seq.map Path.GetFullPath
 
           SimpleBuildName = "net45" }
