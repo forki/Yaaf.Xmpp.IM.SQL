@@ -4,7 +4,7 @@ services:
   - mssql2014rs
 
 environment:
-  connection_mssql: "Data Source=(local)\\SQL2014;Database=master;User ID=sa;Password=Password12!"
+  connection_mssql: "Data Source=(local)\\SQL2014;Database=rosterstore_nunit;User ID=sa;Password=Password12!"
   connection_mysql: "Server=localhost;Database=rosterstore_nunit;Uid=root;Pwd=Password12!"
 
 init:
