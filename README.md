@@ -27,4 +27,4 @@ Yaaf.Xmpp.IM.SQL
   <div class="span1"></div>
 </div>
 
-SQL backend for Yaaf.Xmpp.IM .
+SQL backend for Yaaf.Xmpp.IM.
