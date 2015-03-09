@@ -18,9 +18,8 @@ open Yaaf.Xmpp.IM.Server
 open MySql.Data.Entity
 open System.Data.Entity
 
-[<DbConfigurationType (typeof<MySqlEFConfiguration>)>]
 type ApplicationDbTestContext() = 
-    inherit AbstractRosterStoreDbContext(
+    inherit MySqlRosterStoreDbContext(
         let env = System.Environment.GetEnvironmentVariable ("connection_mysql")
         if System.String.IsNullOrWhiteSpace env then "RosterStore_MySQL" else env)
     override x.Init() = System.Data.Entity.Database.SetInitializer(new NUnitInitializer<ApplicationDbTestContext>())

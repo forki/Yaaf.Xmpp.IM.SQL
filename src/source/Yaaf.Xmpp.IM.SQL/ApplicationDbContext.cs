@@ -54,17 +54,17 @@ namespace Yaaf.Xmpp.IM.Sql {
 
 
 	[DbConfigurationType (typeof (EmptyConfiguration))]
-	public class RosterStoreDbContext : AbstractRosterStoreDbContext
+	public class MSSQLRosterStoreDbContext : AbstractRosterStoreDbContext
 	{		
 		protected override void Init ()
 		{
 			DbConfiguration.SetConfiguration (new EmptyConfiguration ());
-		    System.Data.Entity.Database.SetInitializer<RosterStoreDbContext> (
-				   new MigrateDatabaseToLatestVersion<RosterStoreDbContext, Yaaf.Xmpp.IM.Sql.Migrations.Configuration> ());
+		    System.Data.Entity.Database.SetInitializer<MSSQLRosterStoreDbContext> (
+				   new MigrateDatabaseToLatestVersion<MSSQLRosterStoreDbContext, Yaaf.Xmpp.IM.Sql.Migrations.Configuration> ());
 		}
 
-		public RosterStoreDbContext()
-			: base ("RosterStore_MSSQL")
+        public MSSQLRosterStoreDbContext(string nameOrConnection)
+			: base (nameOrConnection)
 		{
 		}
 

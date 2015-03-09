@@ -21,8 +21,8 @@ namespace Yaaf.Xmpp.IM.Sql.MySql {
 					   new MigrateDatabaseToLatestVersion<MySqlRosterStoreDbContext, Yaaf.Xmpp.IM.Sql.MySql.Migrations.Configuration> ());
 		}
 
-		public MySqlRosterStoreDbContext ()
-			: base ("RosterStore_MySQL")
+		public MySqlRosterStoreDbContext (string nameOrConnection)
+            : base(nameOrConnection)
 		{
 		}
 

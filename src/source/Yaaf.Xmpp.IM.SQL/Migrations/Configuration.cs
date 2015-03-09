@@ -6,13 +6,14 @@ namespace Yaaf.Xmpp.IM.Sql.Migrations
 	using System.Linq;
 
 
-	internal sealed class Configuration : DbMigrationsConfiguration<RosterStoreDbContext> {
+    internal sealed class Configuration : DbMigrationsConfiguration<MSSQLRosterStoreDbContext>
+    {
         public Configuration()
 		{
 			AutomaticMigrationsEnabled = true;
         }
 
-		protected override void Seed (RosterStoreDbContext context)
+        protected override void Seed(MSSQLRosterStoreDbContext context)
         {
             //  This method will be called after migrating to the latest version.
         }
