@@ -22,6 +22,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{1572AB1D-0D26-476E-AEE8-4D4D37CE8033}"
 	ProjectSection(SolutionItems) = preProject
 		..\doc\DevelopReadme.md = ..\doc\DevelopReadme.md
+		..\doc\Migrations.md = ..\doc\Migrations.md
 		..\doc\ReleaseNotes.md = ..\doc\ReleaseNotes.md
 	EndProjectSection
 EndProject
@@ -32,6 +33,11 @@ EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Test.Yaaf.Xmpp.IM.MySQL", "test\Test.Yaaf.Xmpp.IM.MySQL\Test.Yaaf.Xmpp.IM.MySQL.fsproj", "{3402DAF3-0069-404C-BBA5-2B262262FC41}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yaaf.Xmpp.IM.MySQL", "source\Yaaf.Xmpp.IM.MySQL\Yaaf.Xmpp.IM.MySQL.csproj", "{F185802A-7ADF-4544-A08D-C8A74D79A5C5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "templates", "templates", "{C304D3E5-1385-4A30-AC96-2307C5C723AE}"
+	ProjectSection(SolutionItems) = preProject
+		..\doc\templates\template.cshtml = ..\doc\templates\template.cshtml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -62,5 +68,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{A9544860-3E20-4B3A-AA5E-B78407DB4BBB} = {ED8079DD-2B06-4030-9F0F-DC548F98E1C4}
 		{3402DAF3-0069-404C-BBA5-2B262262FC41} = {ED8079DD-2B06-4030-9F0F-DC548F98E1C4}
+		{C304D3E5-1385-4A30-AC96-2307C5C723AE} = {1572AB1D-0D26-476E-AEE8-4D4D37CE8033}
 	EndGlobalSection
 EndGlobal

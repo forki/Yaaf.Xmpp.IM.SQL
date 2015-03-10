@@ -6,6 +6,7 @@ using global::MySql.Data.Entity;
 using System;
 using System.Data.Common;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Migrations;
 using System.Data.Entity.Migrations.History;
 using System.Linq;
@@ -29,7 +30,7 @@ namespace Yaaf.Xmpp.IM.Sql.MySql.Migrations
         }
     } 
 
-    public sealed class MySQLConfiguration<TContext> : DbMigrationsConfiguration<TContext> where TContext : DbContext
+    public class MySQLConfiguration<TContext> : DbMigrationsConfiguration<TContext> where TContext : DbContext
     {
         public MySQLConfiguration()
         {
@@ -43,6 +44,18 @@ namespace Yaaf.Xmpp.IM.Sql.MySql.Migrations
         {
             //  This method will be called after migrating to the latest version.
             
+        }
+    }
+
+    internal sealed class Configuration : MySQLConfiguration<MySqlRosterStoreDbContext>
+    {
+
+    }
+    public class MigrationsContextFactory : IDbContextFactory<MySqlRosterStoreDbContext>
+    {
+        public MySqlRosterStoreDbContext Create()
+        {
+            return new MySqlRosterStoreDbContext("RosterStore_MySQL");
         }
     }
 }
