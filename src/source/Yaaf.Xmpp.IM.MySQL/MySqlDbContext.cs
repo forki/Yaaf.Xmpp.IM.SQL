@@ -16,9 +16,11 @@ namespace Yaaf.Xmpp.IM.Sql.MySql {
 	public class MySqlRosterStoreDbContext : AbstractRosterStoreDbContext {
 		protected override void Init ()
 		{
-			DbConfiguration.SetConfiguration (new MySqlEFConfiguration ());
-			System.Data.Entity.Database.SetInitializer<MySqlRosterStoreDbContext> (
-					   new MigrateDatabaseToLatestVersion<MySqlRosterStoreDbContext, Yaaf.Xmpp.IM.Sql.MySql.Migrations.Configuration> ());
+            DbConfiguration.SetConfiguration (new MySqlEFConfiguration ());
+            System.Data.Entity.Database.SetInitializer<MySqlRosterStoreDbContext> (
+                       new MigrateDatabaseToLatestVersion<
+                           MySqlRosterStoreDbContext, 
+                           Yaaf.Xmpp.IM.Sql.MySql.Migrations.MySQLConfiguration<MySqlRosterStoreDbContext>>());
 		}
 
 		public MySqlRosterStoreDbContext (string nameOrConnection)

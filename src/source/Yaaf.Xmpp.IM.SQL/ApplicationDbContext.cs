@@ -60,7 +60,7 @@ namespace Yaaf.Xmpp.IM.Sql {
 		{
 			DbConfiguration.SetConfiguration (new EmptyConfiguration ());
 		    System.Data.Entity.Database.SetInitializer<MSSQLRosterStoreDbContext> (
-				   new MigrateDatabaseToLatestVersion<MSSQLRosterStoreDbContext, Yaaf.Xmpp.IM.Sql.Migrations.Configuration> ());
+                   new MigrateDatabaseToLatestVersion<MSSQLRosterStoreDbContext, Yaaf.Xmpp.IM.Sql.Migrations.MSSQLConfiguration<MSSQLRosterStoreDbContext>>());
 		}
 
         public MSSQLRosterStoreDbContext(string nameOrConnection)

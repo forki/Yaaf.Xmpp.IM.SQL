@@ -26,7 +26,7 @@ type ApplicationDbTestContext() =
     
 [<TestFixture>]
 [<Category("MYSQL")>]
-type ``Test-Yaaf-Xmpp-IM-Sql-DbContext: Check that Sql backend is ok``() = 
+type ``Test-Yaaf-Xmpp-IM-Sql-DbContext: Check that MySQL backend is ok``() = 
     inherit RosterStoreTests()
 
     override x.CreateRosterStore () = 

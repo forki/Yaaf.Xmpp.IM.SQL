@@ -52,7 +52,7 @@
     <Compile Include="Migrations\201404070253157_Initial.Designer.cs">
       <DependentUpon>201404070253157_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\MSSQLConfiguration.cs" />
     <Compile Include="Model\DbRosterChange.cs" />
     <Compile Include="Model\DbRosterGroup.cs" />
     <Compile Include="Model\DbRosterItem.cs" />
