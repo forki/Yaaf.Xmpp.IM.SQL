@@ -16,9 +16,9 @@ open Yaaf.Xmpp.IM.Server
 open System.Data.Entity
 open System.Data.SqlClient
 
-type ApplicationDbTestContext() =
-    inherit MSSQLRosterStoreDbContext(ApplicationDbTestContext.ConnectionName)
-
+type ApplicationDbTestContext() as x =
+    inherit MSSQLRosterStoreDbContext(ApplicationDbTestContext.ConnectionName, false)
+    do x.DoInit()
     override x.Init() = System.Data.Entity.Database.SetInitializer(new NUnitInitializer<ApplicationDbTestContext>())
     static member ConnectionName
       with get () =  

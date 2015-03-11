@@ -18,14 +18,14 @@ using Yaaf.Xmpp.IM.Sql.Model;
 namespace Yaaf.Xmpp.IM.Sql {
 	public abstract class AbstractRosterStoreDbContext : AbstractApplicationIdentityDbContext<ApplicationUser>
 	{
-		public AbstractRosterStoreDbContext()
-			: base ()
-		{
-		}
 
-		public AbstractRosterStoreDbContext (string nameOrConnection)
-			: base (nameOrConnection)
+		public AbstractRosterStoreDbContext (string nameOrConnection, bool doInit = true)
+			: base (nameOrConnection, FSharpHelper.ToFSharpS<bool>(false))
 		{
+            if (doInit)
+            {
+                this.DoInit();
+            }
 		}
 		
 		/// <summary>
@@ -56,16 +56,20 @@ namespace Yaaf.Xmpp.IM.Sql {
 	[DbConfigurationType (typeof (EmptyConfiguration))]
 	public class MSSQLRosterStoreDbContext : AbstractRosterStoreDbContext
 	{		
-		protected override void Init ()
+		public override void Init ()
 		{
 			DbConfiguration.SetConfiguration (new EmptyConfiguration ());
 		    System.Data.Entity.Database.SetInitializer<MSSQLRosterStoreDbContext> (
-                   new MigrateDatabaseToLatestVersion<MSSQLRosterStoreDbContext, Yaaf.Xmpp.IM.Sql.Migrations.MSSQLConfiguration<MSSQLRosterStoreDbContext>>());
+                   new MigrateDatabaseToLatestVersion<MSSQLRosterStoreDbContext, MSSQLConfiguration<MSSQLRosterStoreDbContext>>());
 		}
 
-        public MSSQLRosterStoreDbContext(string nameOrConnection)
-			: base (nameOrConnection)
+        public MSSQLRosterStoreDbContext(string nameOrConnection, bool doInit = true)
+			: base (nameOrConnection, false)
 		{
+            if (doInit)
+            {
+                this.DoInit();
+            }
 		}
 
 		//public RosterStoreDbContext (string nameOrConnection)

@@ -50,7 +50,7 @@
     <Compile Include="Migrations\201404071245379_Initial.Designer.cs">
       <DependentUpon>201404071245379_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\MySQLConfiguration.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MySqlDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

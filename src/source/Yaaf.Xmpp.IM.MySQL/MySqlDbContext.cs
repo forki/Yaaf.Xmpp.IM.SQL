@@ -9,23 +9,28 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.Entity;
 using System.Data.Entity;
+using Yaaf.Database.MySQL;
 
 namespace Yaaf.Xmpp.IM.Sql.MySql {
 
 	[DbConfigurationType (typeof (MySqlEFConfiguration))]
 	public class MySqlRosterStoreDbContext : AbstractRosterStoreDbContext {
-		protected override void Init ()
+		public override void Init ()
 		{
             DbConfiguration.SetConfiguration (new MySqlEFConfiguration ());
             System.Data.Entity.Database.SetInitializer<MySqlRosterStoreDbContext> (
                        new MigrateDatabaseToLatestVersion<
                            MySqlRosterStoreDbContext, 
-                           Yaaf.Xmpp.IM.Sql.MySql.Migrations.MySQLConfiguration<MySqlRosterStoreDbContext>>());
+                           MySQLConfiguration<MySqlRosterStoreDbContext>>());
 		}
 
-		public MySqlRosterStoreDbContext (string nameOrConnection)
-            : base(nameOrConnection)
-		{
+		public MySqlRosterStoreDbContext (string nameOrConnection, bool doInit = false)
+            : base(nameOrConnection, false)
+        {
+            if (doInit)
+            {
+                this.DoInit();
+            }
 		}
 
 		//public MySqlRosterStoreDbContext (string nameOrConnection)

@@ -1,8 +1,8 @@
 FSharp.Core
 Yaaf.FSharp.Helper
 Yaaf.Xmpp.IM
-Yaaf.Database
 Yaaf.Database.MySQL
+Yaaf.Database
 
 NUnit
 Foq

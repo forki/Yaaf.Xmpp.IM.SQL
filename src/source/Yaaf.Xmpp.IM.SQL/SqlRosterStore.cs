@@ -40,7 +40,7 @@ namespace Yaaf.Xmpp.IM.Sql
 					if (!res.Succeeded) {
 						throw new Exception (string.Format ("Error while creating new user: {0}", string.Join (", ", res.Errors)));
 					}
-					await context.MySaveChanges ();
+                    await context.MySaveChanges();
 					if (string.IsNullOrEmpty (user.Id)) {
 						Console.Error.WriteLine ("User Entity was not refreshed, Please remove me!");
 						user = await um.FindByNameAsync (username);
