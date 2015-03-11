@@ -5,7 +5,7 @@ nuget Yaaf.AdvancedBuilding
 nuget NUnit.Runners
 
 // Project
-nuget FSharp.Core copy_local: false
+nuget FSharp.Core
 nuget Yaaf.FSharp.Helper
 nuget Yaaf.Xmpp.IM
 nuget Yaaf.Database

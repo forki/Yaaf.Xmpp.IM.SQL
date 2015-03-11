@@ -7,7 +7,7 @@ namespace Yaaf.Xmpp.IM.Sql.Migrations
     using System.Linq;
 
 
-    public sealed class MSSQLConfiguration<TContext> : DbMigrationsConfiguration<TContext> where TContext : DbContext
+    public class MSSQLConfiguration<TContext> : DbMigrationsConfiguration<TContext> where TContext : DbContext
     {
         public MSSQLConfiguration()
 		{
