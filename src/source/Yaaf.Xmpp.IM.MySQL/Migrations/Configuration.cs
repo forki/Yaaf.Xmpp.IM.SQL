@@ -23,7 +23,7 @@ namespace Yaaf.Xmpp.IM.Sql.MySql.Migrations
     {
         public MySqlRosterStoreDbContext Create()
         {
-            return new MySqlRosterStoreDbContext("RosterStore_MySQL");
+            return new MySqlRosterStoreDbContext("RosterStore_MySQL", false);
         }
     }
 }

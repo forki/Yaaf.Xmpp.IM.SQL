@@ -18,8 +18,7 @@ open System.Data.SqlClient
 
 type ApplicationDbTestContext() as x =
     inherit MSSQLRosterStoreDbContext(ApplicationDbTestContext.ConnectionName, false)
-    do x.DoInit()
-    override x.Init() = System.Data.Entity.Database.SetInitializer(new NUnitInitializer<ApplicationDbTestContext>())
+
     static member ConnectionName
       with get () =  
         let env = System.Environment.GetEnvironmentVariable ("connection_mssql")
@@ -63,9 +62,12 @@ type ``Test-Yaaf-Xmpp-IM-Sql-DbContext: Check that Sql backend is ok``() =
     override x.CreateRosterStore () = 
         // Fix for some bug, see http://stackoverflow.com/questions/15693262/serialization-exception-in-net-4-5
         System.Configuration.ConfigurationManager.GetSection("dummy") |> ignore
+        //System.Data.Entity.Database.SetInitializer(new NUnitInitializer<ApplicationDbTestContext>())
+        System.Data.Entity.Database.SetInitializer<ApplicationDbTestContext>(null)
         use context = new ApplicationDbTestContext() :> AbstractRosterStoreDbContext
         context.Database.Delete() |> ignore
         context.SaveChanges() |> ignore
+        context.Upgrade()
         SqlRosterStore(fun () -> new ApplicationDbTestContext() :> AbstractRosterStoreDbContext) :> IRosterStore
     
     // inheriting the interface tests from the base class!

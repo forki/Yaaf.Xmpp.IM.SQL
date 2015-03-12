@@ -9,33 +9,38 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.Entity;
 using System.Data.Entity;
+using Yaaf.Database;
 using Yaaf.Database.MySQL;
+using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Migrations;
 
 namespace Yaaf.Xmpp.IM.Sql.MySql {
 
 	[DbConfigurationType (typeof (MySqlEFConfiguration))]
 	public class MySqlRosterStoreDbContext : AbstractRosterStoreDbContext {
-		public override void Init ()
-		{
-            DbConfiguration.SetConfiguration (new MySqlEFConfiguration ());
-            System.Data.Entity.Database.SetInitializer<MySqlRosterStoreDbContext> (
-                       new MigrateDatabaseToLatestVersion<
-                           MySqlRosterStoreDbContext, 
-                           MySQLConfiguration<MySqlRosterStoreDbContext>>());
-		}
-
 		public MySqlRosterStoreDbContext (string nameOrConnection, bool doInit = false)
-            : base(nameOrConnection, false)
+            : base(nameOrConnection)
         {
             if (doInit)
             {
-                this.DoInit();
+                DbConfiguration.SetConfiguration(new MySqlEFConfiguration());
+                System.Data.Entity.Database.SetInitializer<MySqlRosterStoreDbContext>(null);
+                this.Upgrade();
             }
 		}
 
-		//public MySqlRosterStoreDbContext (string nameOrConnection)
-		//	: base (nameOrConnection)
-		//{
-		//}
+        public override string FixScript(string s)
+        {
+            return DatabaseUpgrade.FixScript_MySQL(s);
+        }
+
+        public override DbMigrator GetMigrator()
+        {
+            DbConfiguration.SetConfiguration(new MySqlEFConfiguration());
+            var config = new Yaaf.Xmpp.IM.Sql.MySql.Migrations.Configuration();
+            config.TargetDatabase =
+                new DbConnectionInfo(this.Database.Connection.ConnectionString, "MySql.Data.MySqlClient");
+            return new DbMigrator(config);
+        }
 	}
 }

@@ -15,7 +15,7 @@ namespace Yaaf.Xmpp.IM.Sql.Migrations
     {
         public MSSQLRosterStoreDbContext Create()
         {
-            return new MSSQLRosterStoreDbContext("DefaultConnection");
+            return new MSSQLRosterStoreDbContext("DefaultConnection", false);
         }
     }
 

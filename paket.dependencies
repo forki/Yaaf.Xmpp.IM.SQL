@@ -10,11 +10,6 @@ nuget Yaaf.FSharp.Helper
 nuget Yaaf.Xmpp.IM
 nuget Yaaf.Database
 nuget Yaaf.Database.MySQL
-nuget EntityFramework == 6.0.2
-nuget Microsoft.AspNet.Identity.Core == 1.0.0
-nuget Microsoft.AspNet.Identity.EntityFramework == 1.0.0
-nuget MySql.Data == 6.8.3
-nuget MySQL.Data.Entities == 6.8.3.0
 
 // Test
 // Until Visual Studio test runner supports later versions.
