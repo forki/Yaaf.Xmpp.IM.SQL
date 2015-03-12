@@ -52,10 +52,8 @@ let buildConfig =
                 [ "Yaaf.FSharp.Helper"
                   "Yaaf.Xmpp.IM"
                   "Yaaf.Database"
-                  "EntityFramework"
-                  "Microsoft.AspNet.Identity.Core"
-                  "Microsoft.AspNet.Identity.EntityFramework"
-                  "FSharp.Core" ] |> List.map (fun name -> name, (GetPackageVersion "packages" name)) })
+                  "FSharp.Core" ] 
+                  |> List.map (fun name -> name, (GetPackageVersion "packages" name)) })
         "Yaaf.Xmpp.IM.MySQL.nuspec", (fun config p ->
           { p with
               Version = config.Version
@@ -65,11 +63,7 @@ let buildConfig =
               Description = "A MySQL backend for Yaaf.Xmpp.IM."
               Dependencies = 
                 [ "Yaaf.Xmpp.IM"
-                  "EntityFramework"
-                  "Microsoft.AspNet.Identity.Core"
-                  "Microsoft.AspNet.Identity.EntityFramework"
-                  "MySql.Data"
-                  "MySQL.Data.Entities"
+                  "Yaaf.Database.MySQL"
                   "FSharp.Core" ] 
                   |> List.map (fun name -> name, (GetPackageVersion "packages" name))
                   |> List.append [ config.ProjectName, config.Version ] }) ]
