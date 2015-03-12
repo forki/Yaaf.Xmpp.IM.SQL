@@ -18,10 +18,6 @@ using Yaaf.Xmpp.IM.Sql.Model;
 namespace Yaaf.Xmpp.IM.Sql {
 	public abstract class AbstractRosterStoreDbContext : AbstractApplicationIdentityDbContext<ApplicationUser>
 	{
-		public AbstractRosterStoreDbContext()
-			: base ()
-		{
-		}
 
 		public AbstractRosterStoreDbContext (string nameOrConnection)
 			: base (nameOrConnection)
@@ -54,23 +50,26 @@ namespace Yaaf.Xmpp.IM.Sql {
 
 
 	[DbConfigurationType (typeof (EmptyConfiguration))]
-	public class RosterStoreDbContext : AbstractRosterStoreDbContext
+	public class MSSQLRosterStoreDbContext : AbstractRosterStoreDbContext
 	{		
-		protected override void Init ()
+        public MSSQLRosterStoreDbContext(string nameOrConnection, bool doInit = true)
+			: base (nameOrConnection)
 		{
-			DbConfiguration.SetConfiguration (new EmptyConfiguration ());
-		    System.Data.Entity.Database.SetInitializer<RosterStoreDbContext> (
-				   new MigrateDatabaseToLatestVersion<RosterStoreDbContext, Yaaf.Xmpp.IM.Sql.Migrations.Configuration> ());
+            if (doInit)
+            {
+                DbConfiguration.SetConfiguration(new EmptyConfiguration());
+                System.Data.Entity.Database.SetInitializer<MSSQLRosterStoreDbContext>(null);
+                this.Upgrade();
+            }
 		}
 
-		public RosterStoreDbContext()
-			: base ("RosterStore_MSSQL")
-		{
-		}
-
-		//public RosterStoreDbContext (string nameOrConnection)
-		//	: base (nameOrConnection)
-		//{
-		//}
+        public override DbMigrator GetMigrator()
+        {
+            DbConfiguration.SetConfiguration(new EmptyConfiguration());
+            var config = new Yaaf.Xmpp.IM.Sql.Migrations.Configuration();
+            config.TargetDatabase =
+                new DbConnectionInfo(this.Database.Connection.ConnectionString, "System.Data.SqlClient");
+            return new DbMigrator(config);
+        }
 	}
 }

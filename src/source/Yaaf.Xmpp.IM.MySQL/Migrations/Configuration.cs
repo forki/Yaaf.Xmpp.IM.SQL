@@ -4,26 +4,26 @@
 // ----------------------------------------------------------------------------
 using global::MySql.Data.Entity;
 using System;
+using System.Data.Common;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Migrations;
+using System.Data.Entity.Migrations.History;
 using System.Linq;
+using Yaaf.Database.MySQL;
 
 namespace Yaaf.Xmpp.IM.Sql.MySql.Migrations
 {
-
-    internal sealed class Configuration : DbMigrationsConfiguration<Yaaf.Xmpp.IM.Sql.MySql.MySqlRosterStoreDbContext>
+    internal sealed class Configuration : MySQLConfiguration<MySqlRosterStoreDbContext>
     {
-        public Configuration()
-        {
-            CodeGenerator = new MySqlMigrationCodeGenerator();
-			SetSqlGenerator ("MySql.Data.MySqlClient", new MySqlMigrationSqlGenerator ());
-			AutomaticMigrationsEnabled = true;
-        }
 
-        protected override void Seed(Yaaf.Xmpp.IM.Sql.MySql.MySqlRosterStoreDbContext context)
+    }
+    
+    public class MigrationsContextFactory : IDbContextFactory<MySqlRosterStoreDbContext>
+    {
+        public MySqlRosterStoreDbContext Create()
         {
-            //  This method will be called after migrating to the latest version.
-
+            return new MySqlRosterStoreDbContext("RosterStore_MySQL", false);
         }
     }
 }

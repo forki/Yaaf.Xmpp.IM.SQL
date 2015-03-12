@@ -1,20 +1,22 @@
 namespace Yaaf.Xmpp.IM.Sql.Migrations
 {
-	using System;
-	using System.Data.Entity;
-	using System.Data.Entity.Migrations;
-	using System.Linq;
+    using System;
+    using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Migrations;
+    using System.Linq;
+    using Yaaf.Database;
 
+    internal sealed class Configuration : MSSQLConfiguration<MSSQLRosterStoreDbContext>
+    {
 
-	internal sealed class Configuration : DbMigrationsConfiguration<RosterStoreDbContext> {
-        public Configuration()
-		{
-			AutomaticMigrationsEnabled = true;
-        }
-
-		protected override void Seed (RosterStoreDbContext context)
+    }
+    public class MigrationsContextFactory : IDbContextFactory<MSSQLRosterStoreDbContext>
+    {
+        public MSSQLRosterStoreDbContext Create()
         {
-            //  This method will be called after migrating to the latest version.
+            return new MSSQLRosterStoreDbContext("DefaultConnection", false);
         }
     }
+
 }

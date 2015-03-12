@@ -5,15 +5,11 @@ nuget Yaaf.AdvancedBuilding
 nuget NUnit.Runners
 
 // Project
-nuget FSharp.Core copy_local: false
+nuget FSharp.Core
 nuget Yaaf.FSharp.Helper
 nuget Yaaf.Xmpp.IM
 nuget Yaaf.Database
-nuget EntityFramework == 6.0.2
-nuget Microsoft.AspNet.Identity.Core == 1.0.0
-nuget Microsoft.AspNet.Identity.EntityFramework == 1.0.0
-nuget MySql.Data == 6.8.3
-nuget MySQL.Data.Entities == 6.8.3.0
+nuget Yaaf.Database.MySQL
 
 // Test
 // Until Visual Studio test runner supports later versions.
